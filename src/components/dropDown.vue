@@ -4,7 +4,7 @@
 
 import { reactive, ref } from 'vue'
 
-const selectedOption = ref('anir')
+const selectedOption = ref( 'first')
 const showMenu = ref(false)
 
 const options = reactive([
@@ -17,6 +17,7 @@ function toggleMenu(){
     showMenu.value = !showMenu.value
 }
 function updateOption(option){
+    selectedOption.value = option.name
     console.log('update')
 }
 
@@ -25,12 +26,15 @@ function updateOption(option){
 
 
 <template>
-    <div class="btn-group">
+    <div class="btn-group" v-click-outside="onClickOutside">
         <li @click="toggleMenu()" class="dropdown-toggle" v-if="selectedOption !== undefined">
-          <!-- {{ selectedOption }} -->
-          anir
+          {{ selectedOption }}
+
           <span class="caret"></span>
         </li>
+        <span class="input--field_text">
+            field name
+        </span>
 
         <li @click="toggleMenu()" class="dropdown-toggle dropdown-toggle-placeholder" v-if="selectedOption === undefined">
           <!-- {{placeholderText}} -->
@@ -59,15 +63,26 @@ function updateOption(option){
   display: inline-block;
   vertical-align: middle;
 }
+
+.input--field_text{
+        position:absolute;
+        top:-14px;
+        padding:2px 3px;
+        left:10px;
+        background:#fff;
+        text-align: center;
+        color: #636b6f;
+    }
 .btn-group a:hover {
   text-decoration: none;
 }
 .dropdown-toggle {
-  color: #636b6f;
+  color: #101111;
+
   min-width: 160px;
   padding: 10px 20px 10px 10px;
   text-transform: none;
-  font-weight: 300;
+  font-weight: 600;
   margin-bottom: 7px;
   border: 1px solid rgb(197, 195, 195);
   border-radius: 4px;
@@ -82,7 +97,7 @@ function updateOption(option){
   overflow: hidden;
 }
 .dropdown-toggle:hover {
-  background: #e1e1e1;
+//   background: #e1e1e1;
   cursor: pointer;
 }
 .dropdown-menu {

@@ -10,14 +10,12 @@ import InputFeild from "./inputFeild.vue";
     <div class="add--interconnection">
         <header>
             <button onclick="history.back()" class="back--btn">
-                <img class="w-1"
-                    src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/DG5NWwnlVwzeZtRGptHz1672642971.png"
-                    alt="icon" />
+                <div class="arrow-right"></div>
             </button>
             <h3>Add Interconnection</h3>
         </header>
         <article>
-            <p>Setup Types</p>
+            <p class="article--header__text">Setup Types</p>
             <div class="setup--type_toggler">
                 <div>
                     <input type="radio">
@@ -83,6 +81,9 @@ import InputFeild from "./inputFeild.vue";
             border-radius: 50%;
             background: #f5f5f5;
             border:none;
+            display:flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     article{
@@ -91,6 +92,25 @@ import InputFeild from "./inputFeild.vue";
         background: #fff;
         border-radius: 9px;
         box-shadow: 0px 1px 5px -3px rgb(0 0 0 / 49%);
+        .article--header__text{
+            font-size: 14px;
+            line-height: 14px;
+            color:#747474;
+            font-weight: 600;
+        }
+        .setup--type_toggler{
+            margin:12px 0 20px 0;
+            display: flex;
+
+            display:flex;
+            justify-content: flex-start;
+            gap:12px;
+            div{
+                display:flex;
+            justify-content: flex-start;
+            gap:6px;
+            }
+        }
        .service--form_area {
             max-width: 80%;
             div{
@@ -111,8 +131,18 @@ import InputFeild from "./inputFeild.vue";
             .form--options{
                 display: flex;
                 flex-wrap: wrap;
+                gap:50px;
             }
        }
     }
+}
+
+.arrow-right {
+    width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+
+  border-right:6px solid rgb(33, 33, 36);
 }
 </style>

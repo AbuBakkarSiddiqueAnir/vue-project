@@ -10,6 +10,7 @@
     "lint": "eslint ./src --ext .js --ext .vue"
   },
   "dependencies": {
+    "click-outside-vue3": "^4.0.1",
     "vue": "^3.2.45"
   },
   "devDependencies": {

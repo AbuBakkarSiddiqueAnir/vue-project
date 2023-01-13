@@ -11,18 +11,30 @@ watchEffect(()=>{
 </script>
 
 <template>
-    <div class="input--feild_wrapper">
+    <div class="input--field_wrapper">
         <input class="input--field" placeholder="Customer SBC Name" type="text" v-model="inputValue">
+        <span class="input--field_text">
+            field name
+        </span>
     </div>
 </template>
 
 
 
 <style lang="scss" scoped>
-.input--feild_wrapper{
+.input--field_wrapper{
     position: relative;
-    .input--field {
-  color: #636b6f;
+    .input--field_text{
+        position:absolute;
+        top:-14px;
+        padding:2px 3px;
+        left:10px;
+        background:#fff;
+        text-align: center;
+        color: #636b6f;
+    }
+.input--field {
+  color: #2e2f30;
   min-width: 160px;
   padding: 10px 20px 10px 10px;
   text-transform: none;
