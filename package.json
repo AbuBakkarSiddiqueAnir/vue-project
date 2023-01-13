@@ -18,6 +18,9 @@
     "eslint": "^8.31.0",
     "eslint-config-vue": "^2.0.2",
     "eslint-plugin-vue": "^7.0.0-0",
+    "node-sass": "^8.0.0",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
     "vite": "^4.0.0"
   }
 }
