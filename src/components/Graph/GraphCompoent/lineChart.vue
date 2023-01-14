@@ -1,50 +1,63 @@
 
 
 <script setup>
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Line } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip,PointElement,LineElement, Legend, BarElement, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 import { reactive, ref } from 'vue'
-import { watchEffect } from '@vue/runtime-core'
+import { onMounted, watchEffect } from '@vue/runtime-core';
+import { request } from '../../../Api/api'
+import { stringToArrayConverter, stringToArrayConverterForSingleString } from '../../../Utilities/util.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(Title, Tooltip, ArcElement,PointElement,LineElement, Legend, BarElement, CategoryScale, LinearScale)
 
 const loaded = ref(false)
 
-const chartData = reactive({
-    labels: ['India','USA','Canada','Bhutan','Bangladesh'],
-    datasets: [{ data: [1200,900,750,600,120] }]
+let chartData = reactive({
+  labels: [],
+  datasets: [
+    {
+      label:'ASR',
+      backgroundColor: '#f87979',
+      data: []
+    }, {
+      label:'NER',
+      backgroundColor: '#0f0',
+      data: []
+    }
+  ]
 })
 
 const chartOptions = reactive({
-    responsive: true
+  responsive: true
 })
 
-watchEffect(()=>{
-    console.log(chartData   )
+watchEffect(() => {
+  console.log(chartData)
 })
 
 
+onMounted(async () => {
+  const receivedData = await request.get('http://185.106.240.170:4050/sbcTest/test/graphAPITest.jsp?dataType=outgoing&getASRNERData=true')
 
+  if (receivedData) {
 
+    chartData.labels = stringToArrayConverter(receivedData.clientName)
+    chartData.datasets[0].data = stringToArrayConverterForSingleString(receivedData.ASR)
+    chartData.datasets[1].data = stringToArrayConverterForSingleString(receivedData.NER)
 
-onMounted() {
-    try {
-  const responseData = await fetch('/api/userlist')
-//   this.chartdata = userlist
-    console.log(responseData)
+    loaded.value = true
+  }
 
-  loaded.value = true
-} catch (e) {
-  console.error(e)
-}
-}
+})
 
 </script>
 <template>
-    <div>
-        column chart
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+  <div class="chart__wrapper">
+    <h2>ASR/NER Graph</h2>
+    <div class="chart__box">
+      <Line id="chart-id-line" :data="chartData" :options="chartOptions" v-if="loaded" />
     </div>
+  </div>
 </template>
 
 

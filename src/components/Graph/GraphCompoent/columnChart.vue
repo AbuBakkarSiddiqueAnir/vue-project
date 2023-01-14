@@ -30,10 +30,13 @@ watchEffect(()=>{
 
 </script>
 <template>
-    <div>
-        <h2>Class Of Service Wise Usage</h2>
+
+    <div class="chart__wrapper">
+    <h2>Top Country Based On Country</h2>
+    <div class="chart__box">
         <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
     </div>
+  </div>
 </template>
 
 
