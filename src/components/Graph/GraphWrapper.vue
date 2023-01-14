@@ -5,6 +5,7 @@ import columnChart from "./GraphCompoent/columnChart.vue";
 import DonutChart from "./GraphCompoent/donutChart.vue";
 
 
+
 </script>
 <template>
     <div class="graph-wrapper">

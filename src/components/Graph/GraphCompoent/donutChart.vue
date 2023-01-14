@@ -23,7 +23,7 @@ const chartOptions = reactive({
 
 
 onMounted(async () => {
-    const recievedData = request.get('http://185.106.240.170:4050/sbcTest/test/graphAPITest.jsp?dataType=outgoing&getServiceData=true')
+    const recievedData = request.get('https://185.106.240.170:4050/sbcTest/test/graphAPITest.jsp?dataType=outgoing&getServiceData=true')
 })
 
 </script>
