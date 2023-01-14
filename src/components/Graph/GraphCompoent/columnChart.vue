@@ -21,15 +21,11 @@ const chartOptions = reactive({
 })
 
 
-
-
-
-
-
 </script>
 <template>
 
     <div class="chart__wrapper">
+
     <h2>Top Country Based On Country</h2>
 
     <div class="chart__box">
@@ -38,6 +34,7 @@ const chartOptions = reactive({
     </div>
 
   </div>
+
 </template>
 
 

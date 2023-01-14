@@ -34,9 +34,6 @@ onMounted(() => {
         <span class="input--field_text">
             {{ props.field.name }}
         </span>
-
-
-
         <ul class="dropdown-menu" v-if="showMenu">
             <li v-for="(option, idx) in props.field.options" :key="idx">
                 <a href="javascript:void(0)" @click="updateOption(option)">

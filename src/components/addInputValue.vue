@@ -44,7 +44,6 @@ onMounted(()=>{
 .input--field_wrapper {
     margin-top: 7px;
     position: relative;
-
     .input--field_text {
         position: absolute;
         top: -14px;
@@ -72,9 +71,7 @@ onMounted(()=>{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 6px;
-
-        .add--value__btn {
+        gap: 6px;        .add--value__btn {
             cursor: pointer;
         }
     }
@@ -85,7 +82,6 @@ onMounted(()=>{
         padding: 10px 20px 10px 10px;
         text-transform: none;
         font-weight: 300;
-
         border: 1px solid rgb(197, 195, 195);
         border-radius: 4px;
         background-color: transparent;

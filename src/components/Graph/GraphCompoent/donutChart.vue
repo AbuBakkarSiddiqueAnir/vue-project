@@ -46,7 +46,6 @@ onMounted( async () => {
             <loader v-if="!loaded"/>
             <Doughnut  id="chart-id" :data="chartData" :options="chartOptions" v-if="loaded"/>
         </div>
-
     </div>
 </template>
 

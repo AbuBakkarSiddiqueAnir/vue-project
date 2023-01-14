@@ -137,11 +137,10 @@ const user = ref('buyer')
 }
 
 .arrow-right {
-    width: 0;
+  width: 0;
   height: 0;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-
   border-right:6px solid rgb(33, 33, 36);
 }
 </style>
