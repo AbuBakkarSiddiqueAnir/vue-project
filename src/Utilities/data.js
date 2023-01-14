@@ -115,7 +115,7 @@ export const fields = [
   {
     name: 'Media Ips ',
     type: 'add-input',
-    options: ['12.343.234.234', '232.343.234.234']
+    options: ['12.343.234.234']
   }
 
 ]

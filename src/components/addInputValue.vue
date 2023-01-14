@@ -1,19 +1,19 @@
 <script setup>
 
-import { ref, reactive, watchEffect } from 'vue'
+import { ref, reactive, watchEffect, onMounted } from 'vue'
 const inputValue = ref('');
-const ips = ref(['192.23.12.213'])
+const ips = ref([])
 
-watchEffect(() => {
-    console.log(inputValue.value)
-}
-)
+const props = defineProps(['field'])
 
 const addIp = () => {
+    if(inputValue.value.length < 1) return
     ips.value.push(inputValue.value)
     inputValue.value = ''
 }
-
+onMounted(()=>{
+    ips.value = props.field.options
+})
 </script>
 
 <template>
@@ -27,11 +27,11 @@ const addIp = () => {
         </div>
 
         <span class="input--field_text">
-            field name
+          {{ props.field.name }}
         </span>
 
         <ul>
-            <li v-for="(ip, idx) in ips" :key="idx">
+            <li v-for="(ip, idx) in props.field.options" :key="idx">
                 {{ ip }}
             </li>
         </ul>
@@ -42,6 +42,7 @@ const addIp = () => {
 
 <style lang="scss" scoped>
 .input--field_wrapper {
+    margin-top: 7px;
     position: relative;
 
     .input--field_text {

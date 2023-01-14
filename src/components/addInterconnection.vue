@@ -2,6 +2,9 @@
 
 import FormSelector from './formSelector.vue';
 import {fields} from '../Utilities/data'
+import { ref } from '@vue/reactivity';
+
+const user = ref('buyer')
 
 
 
@@ -19,11 +22,11 @@ import {fields} from '../Utilities/data'
             <p class="article--header__text">Setup Types</p>
             <div class="setup--type_toggler">
                 <div>
-                    <input type="radio">
-                    <span>Buyer</span>
+                    <input type="radio"  v-model="user" value="buyer">
+                    <span >Buyer</span>
                 </div>
                 <div>
-                    <input type="radio">
+                    <input type="radio"  v-model="user" value="supplier">
                     <span>Supplier</span>
                 </div>
             </div>
@@ -101,6 +104,15 @@ import {fields} from '../Utilities/data'
                 display:flex;
             justify-content: flex-start;
             gap:6px;
+            span{
+                font-size: 12px;
+                line-height: 18px;
+                color:#191919;
+            }
+            input{
+                accent-color: rgb(31, 202, 16);
+
+            }
             }
         }
        .service--form_area {
@@ -115,6 +127,7 @@ import {fields} from '../Utilities/data'
                     font-size: 18px;
                     line-height: 30px;
                     color:#5a5a5a;
+                    margin-top:10px;
                     &:hover {
                         background: #ddd5d5;
                     }
