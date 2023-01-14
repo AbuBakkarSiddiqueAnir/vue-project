@@ -1,6 +1,7 @@
 <script setup>
-import dropDown from "./dropDown.vue";
-import InputFeild from "./inputFeild.vue";
+
+import FormSelector from './formSelector.vue';
+import {fields} from '../Utilities/data'
 
 
 
@@ -28,16 +29,7 @@ import InputFeild from "./inputFeild.vue";
             </div>
             <div class="service--form_area">
                 <div class="form--options">
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <dropDown />
-                    <InputFeild/>
-
+                    <FormSelector v-for="(field, idx) in fields" :idx="idx" :field="field" :key="field.name"/>
                 </div>
 
                 <div>
@@ -131,7 +123,7 @@ import InputFeild from "./inputFeild.vue";
             .form--options{
                 display: flex;
                 flex-wrap: wrap;
-                gap:50px;
+                gap:22px;
             }
        }
     }

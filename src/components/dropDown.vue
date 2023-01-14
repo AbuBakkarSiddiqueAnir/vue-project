@@ -2,38 +2,41 @@
 
 <script setup>
 
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref, watchEffect } from 'vue'
 
-const selectedOption = ref( 'first')
+const selectedOption = ref( '')
 const showMenu = ref(false)
+const props = defineProps(['field'])
 
-const options = reactive([
-    { name:'first'},
-     {name:'second' }
-])
 
+watchEffect(()=>{
+  console.log(props.field)
+})
 function toggleMenu(){
     console.log(showMenu.value)
     showMenu.value = !showMenu.value
 }
 function updateOption(option){
     selectedOption.value = option.name
-    console.log('update')
+    showMenu.value = false;
 }
 
+onMounted(() => {
+  selectedOption.value = props.field.name
+})
 
 </script>
 
 
 <template>
-    <div class="btn-group" v-click-outside="onClickOutside">
+    <div class="btn-group" >
         <li @click="toggleMenu()" class="dropdown-toggle" v-if="selectedOption !== undefined">
           {{ selectedOption }}
 
           <span class="caret"></span>
         </li>
         <span class="input--field_text">
-            field name
+            {{ props.field.name }}
         </span>
 
         <li @click="toggleMenu()" class="dropdown-toggle dropdown-toggle-placeholder" v-if="selectedOption === undefined">
@@ -43,7 +46,7 @@ function updateOption(option){
         </li>
 
         <ul class="dropdown-menu" v-if="showMenu">
-            <li v-for="(option, idx) in options" :key="idx">
+            <li v-for="(option, idx) in props.field.options" :key="idx">
                 <a href="javascript:void(0)" @click="updateOption(option)">
                     {{ option.name }}
                 </a>
@@ -56,7 +59,7 @@ function updateOption(option){
 
 <style scoped lang="scss">
 .btn-group {
-  min-width: 160px;
+  min-width: 260px;
   height: 40px;
   position: relative;
   margin: 10px 1px;
@@ -79,7 +82,7 @@ function updateOption(option){
 .dropdown-toggle {
   color: #101111;
 
-  min-width: 160px;
+  min-width: 260px;
   padding: 10px 20px 10px 10px;
   text-transform: none;
   font-weight: 600;
@@ -106,7 +109,7 @@ function updateOption(option){
   left: 0;
   z-index: 1000;
   float: left;
-  min-width: 160px;
+  min-width: 260px;
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;

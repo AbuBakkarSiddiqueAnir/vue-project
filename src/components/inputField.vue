@@ -3,18 +3,15 @@
 import {ref, reactive, watchEffect} from 'vue'
 const inputValue = ref('')
 
-watchEffect(()=>{
-    console.log(inputValue.value)
-}
-)
+const props = defineProps(['field'])
 
 </script>
 
 <template>
     <div class="input--field_wrapper">
-        <input class="input--field" placeholder="Customer SBC Name" type="text" v-model="inputValue">
+        <input class="input--field" placeholder="Enter text" type="text" v-model="inputValue">
         <span class="input--field_text">
-            field name
+            {{ props.field.name }}
         </span>
     </div>
 </template>
@@ -35,7 +32,7 @@ watchEffect(()=>{
     }
 .input--field {
   color: #2e2f30;
-  min-width: 160px;
+  min-width: 260px;
   padding: 10px 20px 10px 10px;
   text-transform: none;
   font-weight: 300;
