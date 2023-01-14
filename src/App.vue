@@ -16,7 +16,7 @@ import GraphWrapper from './components/Graph/GraphWrapper.vue';
 main{
   width:100%;
   height: 100vh;
-  background:#fff;
+  background:#f5f5f5;
   .page--componets__wrapper{
     max-width: 1200px;
     background: #f5f5f5;

@@ -4,7 +4,7 @@
 
 import { onMounted, reactive, ref, watchEffect } from 'vue'
 
-const selectedOption = ref( '')
+const selectedOption = ref('')
 const showMenu = ref(false)
 const props = defineProps(['field'])
 
@@ -29,17 +29,13 @@ onMounted(() => {
         <li @click="toggleMenu()" class="dropdown-toggle" v-if="selectedOption !== undefined">
           {{ selectedOption }}
 
-          <span class="caret"></span>
+          <div class="arrow-down"></div>
         </li>
         <span class="input--field_text">
             {{ props.field.name }}
         </span>
 
-        <li @click="toggleMenu()" class="dropdown-toggle dropdown-toggle-placeholder" v-if="selectedOption === undefined">
-          <!-- {{placeholderText}} -->
-          placeholderText
-          <span class="caret"></span>
-        </li>
+
 
         <ul class="dropdown-menu" v-if="showMenu">
             <li v-for="(option, idx) in props.field.options" :key="idx">
@@ -85,10 +81,6 @@ onMounted(() => {
   margin-bottom: 7px;
   border: 1px solid rgb(197, 195, 195);
   border-radius: 4px;
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
-  background-size: 0 2px, 100% 1px;
-  background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
   background-color: transparent;
   transition: background 0s ease-out;
   white-space: nowrap;
@@ -138,17 +130,26 @@ onMounted(() => {
   margin: 0;
 }
 .caret {
+
+  border-top: 4px dashed;
+  border-top: 4px solid black;
+  border-right: 4px solid black;
+  border-left: 4px solid black;
+
+}
+.arrow-down {
   width: 0;
   position: absolute;
   top: 19px;
   height: 0;
   margin-left: -24px;
   vertical-align: middle;
-  border-top: 4px dashed;
-  border-top: 4px solid black;
-  border-right: 4px solid black;
-  border-left: 4px solid black;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
   right: 10px;
+  border-top: 6px solid rgb(15, 14, 14);
 }
 li {
     list-style: none;

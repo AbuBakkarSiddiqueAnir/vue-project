@@ -119,3 +119,19 @@ export const fields = [
   }
 
 ]
+
+export const fieldsS = [
+  {
+    type: 'dropdown',
+    options: [
+      {
+        id: '1',
+        name: 'Incoming'
+      },
+      {
+        id: '2',
+        name: 'Outgoing'
+      }
+    ]
+  }
+]

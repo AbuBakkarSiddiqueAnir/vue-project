@@ -21,6 +21,7 @@ const props = defineProps(['field'])
 <style lang="scss" scoped>
 .input--field_wrapper{
     position: relative;
+    margin-top:9px;
     .input--field_text{
         position:absolute;
         top:-14px;

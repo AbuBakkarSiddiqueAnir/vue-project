@@ -7,6 +7,7 @@ import { reactive, ref } from 'vue'
 import { onMounted, watchEffect } from '@vue/runtime-core';
 import { request } from '../../../Api/api'
 import { stringToArrayConverter, stringToArrayConverterForSingleString } from '../../../Utilities/util.js'
+import Loader from '../../Loader/Loader.vue'
 
 ChartJS.register(Title, Tooltip, ArcElement,PointElement,LineElement, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -31,11 +32,6 @@ const chartOptions = reactive({
   responsive: true
 })
 
-watchEffect(() => {
-  console.log(chartData)
-})
-
-
 onMounted(async () => {
   const receivedData = await request.get('http://185.106.240.170:4050/sbcTest/test/graphAPITest.jsp?dataType=outgoing&getASRNERData=true')
 
@@ -55,6 +51,7 @@ onMounted(async () => {
   <div class="chart__wrapper">
     <h2>ASR/NER Graph</h2>
     <div class="chart__box">
+      <Loader v-if="!loaded"/>
       <Line id="chart-id-line" :data="chartData" :options="chartOptions" v-if="loaded" />
     </div>
   </div>
