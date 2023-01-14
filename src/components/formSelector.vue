@@ -6,10 +6,6 @@ import InputField from './inputField.vue';
 
 const props = defineProps(['field'])
 
-watchEffect(()=>{
-    console.log('propss',props.field)
-})
-
 
 </script>
 

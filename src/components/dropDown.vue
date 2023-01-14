@@ -8,10 +8,6 @@ const selectedOption = ref( '')
 const showMenu = ref(false)
 const props = defineProps(['field'])
 
-
-watchEffect(()=>{
-  console.log(props.field)
-})
 function toggleMenu(){
     console.log(showMenu.value)
     showMenu.value = !showMenu.value

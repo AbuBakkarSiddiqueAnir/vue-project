@@ -1,6 +1,6 @@
-  {
-    extends: ['vue'],
-    plugins: ['vue'],
-    rules: {},
+  // {
+  //   extends: ['vue'],
+  //   plugins: ['vue'],
+  //   rules: {},
 
-  }
+  // }

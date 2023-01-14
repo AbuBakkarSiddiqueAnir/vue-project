@@ -49,12 +49,6 @@ const user = ref('buyer')
 
 <style scoped lang="scss">
 .add--interconnection{
-    max-width: 1200px;
-    background: #f5f5f5;
-    height: auto;
-    padding:17px;
-    margin: 0 auto;
-    margin-top:100px;
     header{
         padding:25px;
         background: #fff;
